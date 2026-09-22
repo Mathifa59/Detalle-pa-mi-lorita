@@ -5,7 +5,7 @@ los originales de Descargas. Cada una corresponde a una flor, en el orden de tus
 
 | Flor | Foto |
 | --- | --- |
-| 1 | `foto1.jpg` |
+| 1 | `foto1-beso.jpg` |
 | 2 | `foto2.jpg` |
 | 3 | `foto3.jpg` |
 | 4 | `foto4.jpg` |
@@ -28,7 +28,7 @@ Cada objeto tiene esta forma:
 ```js
 {
   titulo: "Nuestra primera aventura",
-  foto: "media/foto1.jpg",
+  foto: "media/foto1-beso.jpg",
   descripcionFoto: "Los dos frente al mar", // Texto alternativo accesible, opcional.
   mensaje: "Mi Lorita, contigo cada día tiene algo bonito.\nY quiero seguir coleccionando momentos a tu lado."
 }

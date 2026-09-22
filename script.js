@@ -13,7 +13,7 @@
 const flores = [
   {
     titulo: "Un beso y todo está bien",
-    foto: "media/foto1.jpg",
+    foto: "media/foto1-beso.jpg",
     descripcionFoto: "Un beso en tu mejilla mientras cierras los ojos",
     mensaje: "Si pudiera guardar un lugar para volver cuando el día se pone difícil, sería este: cerquita de ti, mi Lorita. Hay besos que duran un segundo y se quedan conmigo todo el día."
   },
