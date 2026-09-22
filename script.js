@@ -18,10 +18,10 @@ const flores = [
     mensaje: "Si pudiera guardar un lugar para volver cuando el día se pone difícil, sería este: cerquita de ti, mi Lorita. Hay besos que duran un segundo y se quedan conmigo todo el día."
   },
   {
-    titulo: "En tu equipo, siempre",
+    titulo: "En nuestro equipo, siempre",
     foto: "media/foto2.jpg",
     descripcionFoto: "Los dos sonriendo frente a unas butacas amarillas",
-    mensaje: "Me encanta compartir contigo lo que nos emociona. Pero mi parte favorita siempre es mirar a mi lado y encontrarte sonriendo. En la vida, yo quiero estar en tu equipo."
+    mensaje: "Me encanta compartir contigo lo que nos emociona. Pero mi parte favorita siempre es mirar a mi lado y encontrarte sonriendo. En la vida, siempre en nuestro equipo."
   },
   {
     titulo: "Te volvería a elegir",
@@ -33,7 +33,7 @@ const flores = [
     titulo: "Todas tus versiones",
     foto: "media/foto4.jpg",
     descripcionFoto: "Tu retrato con camiseta azul y la mejilla apoyada en la mano",
-    mensaje: "Tu sonrisa, tus gestos y hasta esa carita seria… me encanta conocerte un poquito más cada día. No tienes que hacer nada especial para alegrarme la vida: con ser tú me basta."
+    mensaje: "Tu sonrisa, tus gestos y hasta esa carita seria… me encanta conocerte un poquito más cada día. No tienes que hacer nada especial para alegrarme la vida: con ser tú es más que suficiente."
   },
   {
     titulo: "Sin prisa, contigo",
