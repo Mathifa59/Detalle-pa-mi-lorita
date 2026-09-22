@@ -52,10 +52,10 @@ externo desde la página.
 
 ## La cita sorpresa
 
-Después de abrir cinco flores diferentes y cerrar la quinta tarjeta, aparece la invitación
-del jueves. Se muestra una sola vez mientras la página siga abierta. Repetir una flor no
-adelanta el contador y el aviso no tapa el mensaje que se está leyendo.
+Después de abrir las siete flores diferentes y cerrar la última tarjeta, aparece la
+invitación del jueves. Puedes volver a verla desde el botón bajo el ramo. Repetir una
+flor no adelanta el contador y el aviso no tapa el mensaje que se está leyendo.
 
 Edita `const sorpresa` justo debajo del array `flores` en `script.js` para cambiar las
-frases o `floresRestantes: 2`. No hay que programar una fecha: es parte del regalo,
+frases o `floresRestantes: 0`. No hay que programar una fecha: es parte del regalo,
 no una notificación del calendario.

@@ -55,11 +55,11 @@ const flores = [
   }
 ];
 
-// La invitación aparece una vez por visita, al cerrar el recuerdo que deja DOS
-// flores por descubrir. Solo cuentan flores diferentes, en cualquier orden.
+// La invitación aparece al cerrar la última flor descubierta. Solo cuentan
+// flores diferentes, en cualquier orden. Después se puede volver a abrir.
 // Puedes cambiar el texto o floresRestantes sin tocar el funcionamiento.
 const sorpresa = {
-  floresRestantes: 2,
+  floresRestantes: 0,
   antesala: "Una sorpresa para mi Lorita",
   dia: "ESTE JUEVES",
   titulo: "Tenemos una cita, tú y yo.",
@@ -169,13 +169,17 @@ const sorpresa = {
       button.addEventListener("click", () => openMemory(index));
       const scheduleHover = (event) => {
         if (!hoverArmed || !hoverPointer.matches || event.pointerType === "touch" || dialog.open || surpriseDialog.open || opening || closing || surpriseClosing || suppressedHover === button) return;
-        clearTimeout(hoverTimer);
-        hoverTimer = setTimeout(() => openMemory(index), 420);
+        if (hoverTimer) return;
+        hoverTimer = setTimeout(() => {
+          hoverTimer = null;
+          openMemory(index);
+        }, 230);
       };
       button.addEventListener("pointerenter", scheduleHover);
       button.addEventListener("pointermove", scheduleHover);
       button.addEventListener("pointerleave", () => {
         clearTimeout(hoverTimer);
+        hoverTimer = null;
         if (suppressedHover === button) suppressedHover = null;
       });
       buttons.push(button);
@@ -214,15 +218,19 @@ const sorpresa = {
     visited.add(index);
     buttons[index].classList.add("is-visited");
     $("#progress-dots").children[index].classList.add("is-visited");
-    $("#progress-label").textContent = visited.size === flores.length
-      ? "Todo este amor es para ti, mi Lorita"
-      : `${visited.size} de ${flores.length} recuerdos descubiertos`;
+    if (visited.size === flores.length) {
+      $("#progress-label").hidden = true;
+      $("#replay-surprise").hidden = false;
+    } else {
+      $("#progress-label").textContent = `${visited.size} de ${flores.length} recuerdos descubiertos`;
+    }
     if (isNew && !surpriseShown && visited.size >= surpriseAfter) surprisePending = true;
   }
 
   function openMemory(index) {
     if (dialog.open || surpriseDialog.open || opening || closing || surpriseClosing) return;
     clearTimeout(hoverTimer);
+    hoverTimer = null;
     opening = true;
     currentIndex = index;
     const flor = flores[index];
@@ -238,7 +246,7 @@ const sorpresa = {
       dialog.scrollTop = 0;
       $("#close-memory").focus({ preventScroll: true });
       updateProgress(index);
-    }, reducedMotion.matches ? 0 : 440);
+    }, reducedMotion.matches ? 0 : 180);
   }
 
   function finishClose() {
@@ -254,11 +262,12 @@ const sorpresa = {
       button.focus({ preventScroll: true });
     }
     closing = false;
-    // Esperamos a que termine de leer: nunca tapamos el recuerdo con otro diálogo.
+    // La invitación espera a que termine de leer la última foto.
     if (surprisePending && !surpriseShown) openSurprise();
   }
 
   function openSurprise() {
+    if (dialog.open || surpriseDialog.open || opening || closing || surpriseClosing) return;
     clearTimeout(hoverTimer);
     surprisePending = false;
     surpriseShown = true;
@@ -294,7 +303,7 @@ const sorpresa = {
     clearTimeout(hoverTimer);
     if (reducedMotion.matches) return finishSurpriseClose();
     surpriseDialog.classList.add("is-closing");
-    surpriseClosingTimer = setTimeout(finishSurpriseClose, 220);
+    surpriseClosingTimer = setTimeout(finishSurpriseClose, 130);
   }
 
   function closeMemory() {
@@ -305,13 +314,14 @@ const sorpresa = {
     closing = true;
     if (reducedMotion.matches || !dialog.open) return finishClose();
     dialog.classList.add("is-closing");
-    closingTimer = setTimeout(finishClose, 220);
+    closingTimer = setTimeout(finishClose, 130);
   }
 
   $("#close-memory").addEventListener("click", closeMemory);
   $("#back-to-bouquet").addEventListener("click", closeMemory);
   $("#close-surprise").addEventListener("click", closeSurprise);
   $("#continue-bouquet").addEventListener("click", closeSurprise);
+  $("#replay-surprise").addEventListener("click", openSurprise);
   function bindDismiss(target, dismiss) {
     target.addEventListener("cancel", (event) => { event.preventDefault(); dismiss(); });
     // Solo cerrar si tanto el inicio como el final del clic ocurren en el fondo.

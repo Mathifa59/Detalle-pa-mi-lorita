@@ -28,10 +28,11 @@ tócala. Se abren los pétalos y aparece su foto y su frase. Vuelve con el botó
 «Volver al ramo», Escape o tocando fuera de la tarjeta.
 También puedes recorrer las flores con Tab y abrirlas con Enter o Espacio.
 
-Al descubrir cinco flores diferentes y volver al ramo, aparece una invitación a una
-cita sorpresa el jueves. Se muestra una vez por visita y permite continuar con las dos
-flores restantes. El texto y el número de flores pendientes se editan en `const sorpresa`,
-debajo del array de recuerdos. Al recargar la página, el recorrido vuelve a empezar.
+Al descubrir las siete flores diferentes y cerrar el último recuerdo, aparece la
+invitación a una cita sorpresa el jueves. Después queda visible «Volver a ver la
+sorpresa» bajo el ramo. El texto y el número de flores pendientes se editan en
+`const sorpresa`, debajo del array de recuerdos. Al recargar la página, el recorrido
+vuelve a empezar.
 
 Se respeta la preferencia de movimiento reducido del dispositivo. Las fotos
 se cargan cuando los necesitas. El progreso de los recuerdos se conserva solo mientras
